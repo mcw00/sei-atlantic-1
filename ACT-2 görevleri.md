@@ -6,7 +6,7 @@ Görev listesi:https://3pgv.notion.site/b7a73a18ef444b9483b5601bf833bae8?v=9111c
 
 Ödüllü testnet ve Sei ACT-2 görevlerini kapsıyor..
 
-##Place multiple Long/Short orders in one transaction (bundled order placement) in any market on Vortex. Currently this needs to be done via CLI
+## Place multiple Long/Short orders in one transaction (bundled order placement) in any market on Vortex. Currently this needs to be done via CLI
 görevi için aşağıdaki kodları çalıştıracağız. cüzdan adresi yazan yere sei cüzdan adresinizi yazın.
 
 ```

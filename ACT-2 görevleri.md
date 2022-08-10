@@ -1,13 +1,13 @@
-Vortex, Sei Network üzerinde ki ilk protocol ve testnet.
+#Vortex, Sei Network üzerinde ki ilk protocol ve testnet.
 
 Testnete katılmanız için node kurmanız "gerekmiyor"
 
 Ödüllü testnet ve Sei ACT-2 görevlerini kapsıyor..
 
-Place multiple Long/Short orders in one transaction (bundled order placement) in any market on Vortex. Currently this needs to be done via CLI
+##Place multiple Long/Short orders in one transaction (bundled order placement) in any market on Vortex. Currently this needs to be done via CLI
 görevi için aşağıdaki kodları çalıştıracağız
 
-
+```
 echo '{
   "body": {
     "messages": [
@@ -18,7 +18,7 @@ echo '{
           {
             "id": "0",
             "status": "PLACED",
-            "account": "sei1t36rv96q35dkhratcu2q73rpka3ryutze4vtlw",
+            "account": "cüzdanadresiniz",
             "contractAddr": "sei14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m",
             "price": "1.000000000000000000",
             "quantity": "0.000010000000000000",
@@ -41,12 +41,12 @@ echo '{
       },
       {
         "@type": "/seiprotocol.seichain.dex.MsgPlaceOrders",
-        "creator": "sei1g65zdfxyu3h79pq8ggjdrhs3wcspk483m7ylm6",
+        "creator": "cüzdanadresiniz",
         "orders": [
           {
             "id": "0",
             "status": "PLACED",
-            "account": "sei1t36rv96q35dkhratcu2q73rpka3ryutze4vtlw",
+            "account": "cüzdanadresiniz",
             "contractAddr": "sei14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m",
             "price": "1.000000000000000000",
             "quantity": "0.000010000000000000",
@@ -89,13 +89,22 @@ echo '{
   },
   "signatures": []
 }' > $HOME/gen_tx.json
+```
 
-ACC=$(seid q account sei1t36rv96q35dkhratcu2q73rpka3ryutze4vtlw -o json | jq -r .account_number)
+```
+ACC=$(seid q account cüzdanadresi -o json | jq -r .account_number)
+```
 
-seq=$(seid q account sei1t36rv96q35dkhratcu2q73rpka3ryutze4vtlw -o json | jq -r .sequence)
+```
+seq=$(seid q account cüzdanadresi -o json | jq -r .sequence)
+```
 
+```
 seid tx sign $HOME/gen_tx.json -s $seq -a $ACC --offline \
 --from mcw01cuzdan --chain-id atlantic-1 \
 --output-document $HOME/txs.json
+```
 
+```
 seid tx broadcast $HOME/txs.json
+```

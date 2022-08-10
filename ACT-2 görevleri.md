@@ -15,7 +15,7 @@ echo '{
     "messages": [
       {
         "@type": "/seiprotocol.seichain.dex.MsgPlaceOrders",
-        "creator": "sei1t36rv96q35dkhratcu2q73rpka3ryutze4vtlw",
+        "creator": "cüzdanadresiniz",
         "orders": [
           {
             "id": "0",

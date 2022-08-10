@@ -1,7 +1,8 @@
 # Vortex, Sei Network üzerinde ki ilk protocol ve testnet.
 
 Testnete katılmanız için node kurmanız "gerekmiyor"
-görev listesi:https://3pgv.notion.site/b7a73a18ef444b9483b5601bf833bae8?v=9111c2c97f2842c5aa75b8d5e5b00a1e
+
+Görev listesi:https://3pgv.notion.site/b7a73a18ef444b9483b5601bf833bae8?v=9111c2c97f2842c5aa75b8d5e5b00a1e
 
 Ödüllü testnet ve Sei ACT-2 görevlerini kapsıyor..
 

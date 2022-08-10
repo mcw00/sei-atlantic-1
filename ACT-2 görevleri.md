@@ -5,7 +5,7 @@ Testnete katılmanız için node kurmanız "gerekmiyor"
 Ödüllü testnet ve Sei ACT-2 görevlerini kapsıyor..
 
 ##Place multiple Long/Short orders in one transaction (bundled order placement) in any market on Vortex. Currently this needs to be done via CLI
-görevi için aşağıdaki kodları çalıştıracağız
+görevi için aşağıdaki kodları çalıştıracağız. cüzdan adresi yazan yere sei cüzdan adresinizi yazın.
 
 ```
 echo '{
@@ -90,18 +90,18 @@ echo '{
   "signatures": []
 }' > $HOME/gen_tx.json
 ```
-
+cüzdan adresi yazan yere sei cüzdan adresinizi yazın.
 ```
 ACC=$(seid q account cüzdanadresi -o json | jq -r .account_number)
 ```
-
+cüzdan adresi yazan yere sei cüzdan adresinizi yazın.
 ```
 seq=$(seid q account cüzdanadresi -o json | jq -r .sequence)
 ```
-
+cüzdan yazan yerde cüzdan isminiz girin
 ```
 seid tx sign $HOME/gen_tx.json -s $seq -a $ACC --offline \
---from mcw01cuzdan --chain-id atlantic-1 \
+--from cuzdan --chain-id atlantic-1 \
 --output-document $HOME/txs.json
 ```
 

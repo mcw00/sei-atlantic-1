@@ -1,0 +1,101 @@
+Vortex, Sei Network üzerinde ki ilk protocol ve testnet.
+
+Testnete katılmanız için node kurmanız "gerekmiyor"
+
+Ödüllü testnet ve Sei ACT-2 görevlerini kapsıyor..
+
+Place multiple Long/Short orders in one transaction (bundled order placement) in any market on Vortex. Currently this needs to be done via CLI
+görevi için aşağıdaki kodları çalıştıracağız
+
+
+echo '{
+  "body": {
+    "messages": [
+      {
+        "@type": "/seiprotocol.seichain.dex.MsgPlaceOrders",
+        "creator": "sei1t36rv96q35dkhratcu2q73rpka3ryutze4vtlw",
+        "orders": [
+          {
+            "id": "0",
+            "status": "PLACED",
+            "account": "sei1t36rv96q35dkhratcu2q73rpka3ryutze4vtlw",
+            "contractAddr": "sei14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m",
+            "price": "1.000000000000000000",
+            "quantity": "0.000010000000000000",
+            "priceDenom": "USDC",
+            "assetDenom": "ATOM",
+            "orderType": "LIMIT",
+            "positionDirection": "SHORT",
+            "data": "{\"position_effect\":\"Open\",\"leverage\":\"1\"}",
+            "statusDescription": ""
+          }
+        ],
+        "contractAddr": "sei14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m",
+        "funds": [
+          {
+            "denom": "uusdc",
+            "amount": "10"
+          }
+        ],
+        "autoCalculateDeposit": false
+      },
+      {
+        "@type": "/seiprotocol.seichain.dex.MsgPlaceOrders",
+        "creator": "sei1g65zdfxyu3h79pq8ggjdrhs3wcspk483m7ylm6",
+        "orders": [
+          {
+            "id": "0",
+            "status": "PLACED",
+            "account": "sei1t36rv96q35dkhratcu2q73rpka3ryutze4vtlw",
+            "contractAddr": "sei14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m",
+            "price": "1.000000000000000000",
+            "quantity": "0.000010000000000000",
+            "priceDenom": "USDC",
+            "assetDenom": "ATOM",
+            "orderType": "LIMIT",
+            "positionDirection": "SHORT",
+            "data": "{\"position_effect\":\"Open\",\"leverage\":\"1\"}",
+            "statusDescription": ""
+          }
+        ],
+        "contractAddr": "sei14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m",
+        "funds": [
+          {
+            "denom": "uusdc",
+            "amount": "10"
+          }
+        ],
+        "autoCalculateDeposit": false
+      }
+    ],
+    "memo": "",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [],
+    "fee": {
+      "amount": [
+        {
+          "denom": "usei",
+          "amount": "0"
+        }
+      ],
+      "gas_limit": "0",
+      "payer": "",
+      "granter": ""
+    }
+  },
+  "signatures": []
+}' > $HOME/gen_tx.json
+
+ACC=$(seid q account sei1t36rv96q35dkhratcu2q73rpka3ryutze4vtlw -o json | jq -r .account_number)
+
+seq=$(seid q account sei1t36rv96q35dkhratcu2q73rpka3ryutze4vtlw -o json | jq -r .sequence)
+
+seid tx sign $HOME/gen_tx.json -s $seq -a $ACC --offline \
+--from mcw01cuzdan --chain-id atlantic-1 \
+--output-document $HOME/txs.json
+
+seid tx broadcast $HOME/txs.json

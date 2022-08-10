@@ -1,4 +1,4 @@
-#Vortex, Sei Network üzerinde ki ilk protocol ve testnet.
+# Vortex, Sei Network üzerinde ki ilk protocol ve testnet.
 
 Testnete katılmanız için node kurmanız "gerekmiyor"
 
